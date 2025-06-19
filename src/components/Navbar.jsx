@@ -2,13 +2,14 @@ import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuIt
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import 'tailwindcss';  
 import { NavLink } from 'react-router-dom';
+import psLogo from '../assets/PSlogo.png';
 
 const navigation = [
-  { name: 'Dashboard', href: '/dashboard', current: true },
-  { name: 'Team', href: '/team', current: false },
-  { name: 'Projects', href: '/projects', current: false },
-  { name: 'Calendar', href: '/calendar', current: false },
-]
+  { name: 'Dashboard', href: '/dashboard', current: false },
+  { name: 'OJT Training', href: '/training', current: true }, // Highlighted current page
+  { name: 'Progress', href: '/progress', current: false },
+  { name: 'Resources', href: '/resources', current: false },
+];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -16,7 +17,7 @@ function classNames(...classes) {
 
 export default function Example() {
   return (
-    <Disclosure as="nav" className="bg-gray-800">0
+    <Disclosure as="nav" className="bg-gray-800 fixed w-full z-10 top-0">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -31,9 +32,9 @@ export default function Example() {
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex shrink-0 items-center">
               <img
-                alt="Your Company"
-                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-                className="h-8 w-auto"
+                alt="PS logo"
+                src={psLogo}
+                className="h-10 w-auto"
               />
             </div>
             <div className="hidden sm:ml-6 sm:block">
