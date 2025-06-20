@@ -3,12 +3,13 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import 'tailwindcss';  
 import { NavLink } from 'react-router-dom';
 import psLogo from '../assets/PSlogo.png';
+import DarkModeToggle from './DarkModeToggle';
 
 const navigation = [
-  { name: 'Dashboard', href: '/dashboard', current: false },
-  { name: 'OJT Training', href: '/training', current: true }, // Highlighted current page
-  { name: 'Progress', href: '/progress', current: false },
-  { name: 'Resources', href: '/resources', current: false },
+  { name: 'Home', href: '/', current: false },
+  { name: 'OJT', href: '/ojt', current: true }, // Highlighted current page
+  { name: 'Portfolio', href: '/progress', current: false },
+  { name: 'Services', href: '/resources', current: false },
 ];
 
 function classNames(...classes) {
@@ -56,6 +57,7 @@ export default function Example() {
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <DarkModeToggle />
             <button
               type="button"
               className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"

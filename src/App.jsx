@@ -1,11 +1,11 @@
-
-
-import ModuleCard from "./Pages/ModuleCard";
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Layout from './components/Layout';
+import TrainingPage from "./Pages/TrainingPage";
+import Home from "./Pages/Home";
 import ProgressTracker from "./Pages/ProgressTracker";
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar.jsx"; // Your navbar component
+import Projects from "./Pages/projects.jsx"
 
-export default function App() {
+const App = () => {
   const trainingModules = [
     {
       title: "Orientation & Policies",
@@ -25,19 +25,22 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navbar /> {/* Replaced my Header with your Navbar */}
-      <main className="container mx-auto px-4 py-8 mt-16"> {/* Added mt-16 for navbar spacing */}
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">Training Modules</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {trainingModules.map((module, index) => (
-            <ModuleCard key={index} module={module} />
-          ))}
-        </div>
-
-        <ProgressTracker className="mt-12" />
-      </main>
-      <Footer />
-    </div>
+    <>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/dashboard" element={<Home />} />
+          <Route path="/myprojects" element={<Projects />} />
+          <Route path="/training" element={
+              <TrainingPage modules={trainingModules} 
+                ProgressTracker={ProgressTracker}
+              />
+            } 
+          />
+          <Route path="*" element={<Navigate to="/dashboard" replace />} />        
+        </Route>
+      </Routes>
+    </>
   );
-}
+};
+
+export default App;
